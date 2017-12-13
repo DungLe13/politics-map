@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Twitter Politics Sentiment Analysis</title>
+
+    <!-- Mapbox GL -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet' />
+    <!-- My designed CSS -->
+    <link href="mymap-style.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.css' type='text/css' />
+
+    <div id="mapid"></div>
+
+    <div class="right-side-menu">
+      <div id="title">
+        <h2>Twitter Politics Sentiment</h2>
+        <p> by Dung Le </p>
+      </div>
+
+      <div id="query-topic">
+        <p>Twitter Politics Sentiment is a digital art platform that reflects (part of) people opinions and sentiments about the two political parties that are running antagonistically in the United States. It collected all the tweets from the first half of December 2017 regarding the Democrats and Republicans. Using a deep neural network trained on 1.6 million tweets, the system classified negative and positive tweets given its content. Since tweets with geolocation tag were scarce, I used users' self-reported location, which gave an estimation of which city/town they lived in.</p>
+      </div>
+
+      <div class="result">
+        <div id="dropdown"> 
+          <h3>SELECT POLITICAL PARTY</h3>
+          <select id="mySelect">
+            <option value="both">Both Parties</option>
+            <option value="dems">Democrats only</option>
+            <option value="repubs">Republicans only</option>
+          </select>
+        </div>
+
+        <div id="piechart" style="width: 345.6px; height: 192px; position: relative; left: 30px;"></div>
+        <div id="piechart2" style="width: 345.6px; height: 192px; position: relative; left: 30px;"></div>
+      </div>
+    </div>
+
+    <!-- Google JavaScript to draw piechart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart2);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Sentiment', 'Number of Tweets'],
+          ['Positive', 69],
+          ['Negative', 4]
+        ]);
+
+        var options = {
+          title: 'Toward Republicans'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+      function drawChart2() {
+        var data = google.visualization.arrayToDataTable([
+          ['Sentiment', 'Number of Tweets'],
+          ['Positive', 76],
+          ['Negative', 26]
+        ]);
+
+        var options = {
+          title: 'Toward Democrats'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <!-- jQueryUI Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- My JavaScript file -->
+    <script type="text/javascript" src="mymap-script.js"></script>
+  </body>
+
+</html>

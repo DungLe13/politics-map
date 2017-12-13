@@ -1,0 +1,43 @@
+html {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+#mapid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 72vw;
+}
+
+.right-side-menu {
+  float: right;
+}
+
+#title h2 {
+  position: relative;
+  left: 50px;
+  top: -10px;
+}
+
+#title p {
+  position: relative;
+  top: -20px;
+  left: 140px;
+}
+
+#query-topic p {
+  position: relative;
+  line-height: 150%;
+  top: -10px;
+  left: 0px;
+  margin-right: 20px;
+  width: 25vw;
+}
+
+#dropdown select {
+  width: 200px;
+  margin-bottom: 30px;
+}
